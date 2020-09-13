@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+.details{
+    text-overflow: clip;
+}
+
+.limit-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.unreadText{
+color:$blue
+}
+
+.list-border{
+    border-left: solid blue;
+}
+.margin-bottom-5{
+    margin-bottom: 5px;
+}
+
+.icon-size{
+ font-size:$iconSize
+}
+.padLeft20px{
+    padding-left:20px;
+}
+.fontColorBlue{
+    color:$blue;
+}
+.toolButtonStyle{
+padding: 0px;
+border: none;
+}

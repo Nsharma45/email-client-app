@@ -1,0 +1,3 @@
+<span class="countStyle" *ngIf="(unreadCount$ | async)?.length > 0; else empty">
+    {{(unreadCount$ | async)?.length}}
+</span>

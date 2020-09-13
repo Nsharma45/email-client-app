@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <span>
+                <mat-icon class="icon-size fontColorBlue">add_circle_outline</mat-icon>New
+                <mat-icon class="icon-size fontColorBlue">keyboard_arrow_down</mat-icon>
+            </span>
+            <span class="padLeft20px">
+                <mat-icon class="icon-size fontColorBlue">mark_email_read</mat-icon> Mark all as read
+            </span>
+
+        </div>
+        <div class="col-lg-6">
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-8">
+                    <nav class="nav">
+                        <a class="nav-link active" href="#"><strong>Focused</strong></a>
+                        <a class="nav-link disabled">Other</a>
+                    </nav>
+                </div>
+                <div class="col-lg-4">
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">Filter</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" (click)="performFilter('flag')">Flag</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div *ngFor="let mailDetails of mailData$|async">
+                <div class="list-group" [ngClass]="mailDetails.unread ? 'list-border' : ''"
+                    *ngIf="!mailDetails.isDeleted">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start margin-bottom-5">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1" (click)="showMailDetails(mailDetails)">{{mailDetails.mailFrom}}</h5>
+                            <small>
+                                <button class="toolButtonStyle" (click)="onDelete(mailDetails)"
+                                    title="Delete this message">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+
+                                <button *ngIf="!mailDetails.isFlag" class="toolButtonStyle"
+                                    (click)="markAsFlaged(mailDetails)" title="Flag this message">
+                                    <mat-icon>
+                                        outlined_flag</mat-icon>
+                                </button>
+                                <button *ngIf="mailDetails.isFlag" class="toolButtonStyle"
+                                    (click)="markAsUnFlag(mailDetails)" title="Unflag this message">
+                                    <mat-icon style="color:red">flag
+                                    </mat-icon>
+                                </button>
+
+                            </small>
+                        </div>
+                        <div (click)="showMailDetails(mailDetails)">
+                            <p class="mb-1" class="limit-text" [ngClass]="mailDetails.unread ? 'unreadText' : ''">
+                                {{mailDetails.subject}}
+                            </p>
+                            <p class="limit-text" [innerHTML]="mailDetails.content"></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <app-mail-view [mailDetail]="mailDetail"></app-mail-view>
+        </div>
+    </div>
+</div>

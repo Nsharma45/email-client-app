@@ -1,0 +1,14 @@
+@import '../../variables.scss';
+
+.empty {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 1rem;
+    padding-top:10rem;
+  }
+
+  .email-icon{
+      color:$blue;
+  }
