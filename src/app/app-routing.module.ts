@@ -4,8 +4,8 @@ import { MailsComponent } from './components/mails/mails.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 const routes: Routes = [
-  { path: 'mail-component', component: MailsComponent },
-  { path: '', redirectTo: '/mail-component', pathMatch: 'full' },
+  { path: 'mail', component: MailsComponent },
+  { path: '', redirectTo: '/mail', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
